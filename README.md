@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ecommerce-nextjs
 
 A **Next.js** e-commerce style front-end built for **learning and experimentation**. It includes multiple storefront layouts, shop and blog flows, a cart/wishlist/compare experience, and a separate **admin-style dashboard** area with charts and data tables.
@@ -53,16 +54,70 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone <your-repo-url> ecommerce-nextjs
+=======
+# Ecommerce Next.js App
+
+Modern full-stack ecommerce application built with:
+
+- Next.js 16
+- TypeScript
+- MongoDB Atlas
+- Prisma ORM
+- JWT Authentication
+- Cloudinary Upload
+- Responsive UI
+
+## Features
+
+- User Authentication (JWT)
+- Product Management
+- MongoDB Database
+- Prisma ORM
+- Image Upload
+- Responsive Ecommerce UI
+- Admin Dashboard
+- Protected Routes
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- MongoDB Atlas
+- Prisma
+- Tailwind CSS
+- JWT
+- Cloudinary
+
+## Installation
+
+```bash
+git clone https://github.com/ydv-hrx/ecommerce-nextjs.git
+>>>>>>> dd638a351149b15f021ffdf6ed408271a06a34d3
 cd ecommerce-nextjs
 npm install
 ```
 
+<<<<<<< HEAD
 Run the development server:
+=======
+## Environment Variables
+
+Create `.env` file:
+
+```env
+DATABASE_URL=your_mongodb_url
+JWT_SECRET=your_jwt_secret
+```
+
+## Run Project
+>>>>>>> dd638a351149b15f021ffdf6ed408271a06a34d3
 
 ```bash
 npm run dev
 ```
 
+<<<<<<< HEAD
 Open [http://localhost:3000](http://localhost:3000) in your browser. The app hot-reloads when you edit source files.
 
 ---
@@ -118,3 +173,8 @@ If you fork this for learning, keep the **non-commercial / educational intent** 
 ## Acknowledgments
 
 Built with [Next.js](https://nextjs.org) and the broader open-source ecosystem. Refer to individual package licenses in `package.json` and in third-party asset folders as needed.
+=======
+## Author
+
+Hrithik Roshan
+>>>>>>> dd638a351149b15f021ffdf6ed408271a06a34d3
