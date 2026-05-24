@@ -130,7 +130,7 @@ export default function BlogGridPage() {
                                         {/* single latest post */}
                                         <div className="single-latest-post-area">
                                             <a href="blog-details.html" className="thumbnail">
-                                                <img src="/assets/images/blog/thumb/01.jpg" alt="thumbnail" />
+                                                <img src="//thumb/01.jpg" alt="thumbnail" />
                                             </a>
                                             <div className="inner-content-area">
                                                 <div className="icon-top-area">
@@ -148,7 +148,7 @@ export default function BlogGridPage() {
                                         {/* single latest post */}
                                         <div className="single-latest-post-area">
                                             <a href="blog-details.html" className="thumbnail">
-                                                <img src="/assets/images/blog/thumb/02.jpg" alt="thumbnail" />
+                                                <img src="//thumb/02.jpg" alt="thumbnail" />
                                             </a>
                                             <div className="inner-content-area">
                                                 <div className="icon-top-area">
@@ -167,7 +167,7 @@ export default function BlogGridPage() {
                                         {/* single latest post */}
                                         <div className="single-latest-post-area">
                                             <a href="blog-details.html" className="thumbnail">
-                                                <img src="/assets/images/blog/thumb/03.jpg" alt="thumbnail" />
+                                                <img src="//thumb/03.jpg" alt="thumbnail" />
                                             </a>
                                             <div className="inner-content-area">
                                                 <div className="icon-top-area">
@@ -219,56 +219,56 @@ export default function BlogGridPage() {
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/04.jpg" alt="post" />
+                                                <img src="//thumb/04.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/05.jpg" alt="post" />
+                                                <img src="//thumb/05.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/06.jpg" alt="post" />
+                                                <img src="//thumb/06.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/07.jpg" alt="post" />
+                                                <img src="//thumb/07.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/08.jpg" alt="post" />
+                                                <img src="//thumb/08.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/09.jpg" alt="post" />
+                                                <img src="//thumb/09.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/10.jpg" alt="post" />
+                                                <img src="//thumb/10.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}
                                         {/* single-instagram-post */}
                                         <a href="#">
                                             <div className="single-instagram-post">
-                                                <img src="/assets/images/blog/thumb/11.jpg" alt="post" />
+                                                <img src="//thumb/11.jpg" alt="post" />
                                             </div>
                                         </a>
                                         {/* single-instagram-post end */}

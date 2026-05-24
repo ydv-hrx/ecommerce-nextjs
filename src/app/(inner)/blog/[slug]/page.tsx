@@ -29,7 +29,7 @@ export default function Home() {
               <div className="blog-details-area-1">
                 <div className="thumbnail">
                   <img
-                    src={`/assets/images/blog/${blogPost.bannerImg}`}
+                    src={`//${blogPost.bannerImg}`}
                     alt={blogPost.title}
                   />
                 </div>
@@ -54,8 +54,8 @@ export default function Home() {
                   <div className="row">
                     <div className="col-lg-6">
                       <div className="thumbnail-row-iamge">
-                        <img src="/assets/images/blog/22.jpg" alt="" />
-                        <img src="/assets/images/blog/23.jpg" alt="" />
+                        <img src="//22.jpg" alt="" />
+                        <img src="//23.jpg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ export default function Home() {
                   {/* Author Info */}
                   <div className="blog-details-author">
                     <div className="thumbnail">
-                      <img src="/assets/images/blog/01.png" alt="" />
+                      <img src="//01.png" alt="" />
                     </div>
                     <div className="author-information">
                       <span>Author</span>
@@ -103,7 +103,7 @@ export default function Home() {
                     <h3 className="title">03 Comments</h3>
                     <div className="single-comment-area">
                       <div className="thumbanil">
-                        <img src="/assets/images/blog/02.png" alt="comment" />
+                        <img src="//02.png" alt="comment" />
                       </div>
                       <div className="comment-information">
                         <div className="top-area">
@@ -124,7 +124,7 @@ export default function Home() {
                     </div>
                     <div className="single-comment-area bottom pl--100 pl_sm--0 mt--50 pt--50">
                       <div className="thumbanil">
-                        <img src="/assets/images/blog/03.png" alt="comment" />
+                        <img src="//03.png" alt="comment" />
                       </div>
                       <div className="comment-information">
                         <div className="top-area">
@@ -197,7 +197,7 @@ export default function Home() {
                   {[1, 2, 3].map((_, idx) => (
                     <div className="single-latest-post-area" key={idx}>
                       <a href="#" className="thumbnail">
-                        <img src={`/assets/images/blog/thumb/0${idx + 1}.jpg`} alt="thumbnail" />
+                        <img src={`//thumb/0${idx + 1}.jpg`} alt="thumbnail" />
                       </a>
                       <div className="inner-content-area">
                         <div className="icon-top-area">

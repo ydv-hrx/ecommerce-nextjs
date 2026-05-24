@@ -24,7 +24,7 @@ function ComponentName() {
                 <div className="single-service-area-style-one">
                   <div className="icon-area">
                     <span className="bg-text">01</span>
-                    <img src="assets/images/service/01.svg" alt="service" />
+                    <img src="/assets/images/service/01.svg" alt="service" />
                   </div>
                   <div className="bottom-content">
                     <h3 className="title">Organic Food Services</h3>
@@ -39,7 +39,7 @@ function ComponentName() {
                 <div className="single-service-area-style-one">
                   <div className="icon-area">
                     <span className="bg-text">02</span>
-                    <img src="assets/images/service/02.svg" alt="service" />
+                    <img src="/assets/images/service/02.svg" alt="service" />
                   </div>
                   <div className="bottom-content">
                     <h3 className="title">Organic Food Services</h3>
@@ -54,7 +54,7 @@ function ComponentName() {
                 <div className="single-service-area-style-one">
                   <div className="icon-area">
                     <span className="bg-text">03</span>
-                    <img src="assets/images/service/03.svg" alt="service" />
+                    <img src="/assets/images/service/03.svg" alt="service" />
                   </div>
                   <div className="bottom-content">
                     <h3 className="title">Organic Food Services</h3>

@@ -172,7 +172,7 @@ export default function Home() {
                                     <div className="row g-5">
                                         <div className="col-lg-3">
                                             <div className="vendor-banner-left">
-                                                <img src="assets/images/vendor/09.svg" alt="vendor" />
+                                                <img src="/assets/images/vendor/09.svg" alt="vendor" />
                                                 <div className="header-area">
                                                     <h4 className="title">
                                                         Food Forulard <span>Open</span>
@@ -228,8 +228,8 @@ export default function Home() {
                                     <div className="col-lg-12">
                                         <div className="product-area-add-wrapper bg_image">
                                             <h2 className="title">Products</h2>
-                                            <img src="assets/images/vendor/01.png" alt="" className="one" />
-                                            <img src="assets/images/vendor/02.png" alt="" className="two" />
+                                            <img src="/assets/images/vendor/01.png" alt="" className="one" />
+                                            <img src="/assets/images/vendor/02.png" alt="" className="two" />
                                         </div>
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@ export default function Home() {
                                     <div className="col-lg-4 col-md-6">
                                         <div className="single-shopping-card-one tranding-product">
                                             <Link href="/shop" className="thumbnail-preview">
-                                                <img src="assets/images/grocery/08.jpg" alt="grocery" />
+                                                <img src="/assets/images/grocery/08.jpg" alt="grocery" />
                                             </Link>
                                             <div className="body-content">
                                                 <div className="time-tag">
@@ -298,7 +298,7 @@ export default function Home() {
                                     <div className="col-lg-4 col-md-6">
                                         <div className="single-shopping-card-one tranding-product">
                                             <Link href="/shop" className="thumbnail-preview">
-                                                <img src="assets/images/grocery/09.jpg" alt="grocery" />
+                                                <img src="/assets/images/grocery/09.jpg" alt="grocery" />
                                             </Link>
                                             <div className="body-content">
                                                 <div className="time-tag">
@@ -320,7 +320,7 @@ export default function Home() {
                                     <div className="col-lg-4 col-md-6">
                                         <div className="single-shopping-card-one tranding-product">
                                             <Link href="/shop" className="thumbnail-preview">
-                                                <img src="assets/images/grocery/10.jpg" alt="grocery" />
+                                                <img src="/assets/images/grocery/10.jpg" alt="grocery" />
                                             </Link>
                                             <div className="body-content">
                                                 <div className="time-tag">
@@ -342,7 +342,7 @@ export default function Home() {
                                     <div className="col-lg-4 col-md-6">
                                         <div className="single-shopping-card-one tranding-product">
                                             <Link href="/shop" className="thumbnail-preview">
-                                                <img src="assets/images/grocery/11.jpg" alt="grocery" />
+                                                <img src="/assets/images/grocery/11.jpg" alt="grocery" />
                                             </Link>
                                             <div className="body-content">
                                                 <div className="time-tag">
@@ -364,7 +364,7 @@ export default function Home() {
                                     <div className="col-lg-4 col-md-6">
                                         <div className="single-shopping-card-one tranding-product">
                                             <Link href="/shop" className="thumbnail-preview">
-                                                <img src="assets/images/grocery/12.jpg" alt="grocery" />
+                                                <img src="/assets/images/grocery/12.jpg" alt="grocery" />
                                             </Link>
                                             <div className="body-content">
                                                 <div className="time-tag">
@@ -386,7 +386,7 @@ export default function Home() {
                                     <div className="col-lg-4 col-md-6">
                                         <div className="single-shopping-card-one tranding-product">
                                             <Link href="/shop" className="thumbnail-preview">
-                                                <img src="assets/images/grocery/13.jpg" alt="grocery" />
+                                                <img src="/assets/images/grocery/13.jpg" alt="grocery" />
                                             </Link>
                                             <div className="body-content">
                                                 <div className="time-tag">

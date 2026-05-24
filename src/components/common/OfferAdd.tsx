@@ -18,7 +18,7 @@ function OfferAdd() {
                                     <br /> Don't miss these opportunities...
                                 </p>
                                 <div className="offer-iamge">
-                                    <img src="assets/images/offer/01.png" alt="offer-area" />
+                                    <img src="/assets/images/offer/01.png" alt="offer-area" />
                                 </div>
                             </div>
                         </div>

@@ -17,7 +17,7 @@ const BlogGridMain: React.FC<BlogGridMainProps> = ({
         <>
 
             <Link href={`/blog/${Slug}`} className="thumbnail">
-                <img src={`assets/images/blog/${blogImage}`} alt="blog-area" />
+                <img src={`/${blogImage}`} alt="blog-area" />
             </Link>
             <div className="blog-body">
                 <div className="top-area">

@@ -278,7 +278,7 @@ function HeaderFive() {
                       <div className="category-btn category-hover-header five-style">
                         <img
                           className="parent"
-                          src="assets/images/icons/14.svg"
+                          src="/assets/images/icons/14.svg"
                           alt="icons"
                         />
                         <span className="ml--10">All Categories</span>
@@ -313,72 +313,72 @@ function HeaderFive() {
                       <div className="category-btn category-hover-header">
                         <img
                           className="parent"
-                          src="assets/images/icons/bar-1.svg"
+                          src="/assets/images/icons/bar-1.svg"
                           alt="icons"
                         />
                         <span>Categories</span>
                         <ul className="category-sub-menu">
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/01.svg" alt="icons" />
+                              <img src="/assets/images/icons/01.svg" alt="icons" />
                               <span>Breakfast &amp; Dairy</span>
                               <i className="fa-regular fa-plus" />
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/02.svg" alt="icons" />
+                              <img src="/assets/images/icons/02.svg" alt="icons" />
                               <span>Meats &amp; Seafood</span>
                               <i className="fa-regular fa-plus" />
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/03.svg" alt="icons" />
+                              <img src="/assets/images/icons/03.svg" alt="icons" />
                               <span>Breads &amp; Bakery</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/04.svg" alt="icons" />
+                              <img src="/assets/images/icons/04.svg" alt="icons" />
                               <span>Chips &amp; Snacks</span>
                               <i className="fa-regular fa-plus" />
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/05.svg" alt="icons" />
+                              <img src="/assets/images/icons/05.svg" alt="icons" />
                               <span>Medical Healthcare</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/06.svg" alt="icons" />
+                              <img src="/assets/images/icons/06.svg" alt="icons" />
                               <span>Breads &amp; Bakery</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/07.svg" alt="icons" />
+                              <img src="/assets/images/icons/07.svg" alt="icons" />
                               <span>Biscuits &amp; Snacks</span>
                               <i className="fa-regular fa-plus" />
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/08.svg" alt="icons" />
+                              <img src="/assets/images/icons/08.svg" alt="icons" />
                               <span>Frozen Foods</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/09.svg" alt="icons" />
+                              <img src="/assets/images/icons/09.svg" alt="icons" />
                               <span>Grocery &amp; Staples</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" className="menu-item">
-                              <img src="assets/images/icons/10.svg" alt="icons" />
+                              <img src="/assets/images/icons/10.svg" alt="icons" />
                               <span>Other Items</span>
                             </a>
                           </li>
@@ -420,7 +420,7 @@ function HeaderFive() {
                             <div className="cart-item-1 border-top">
                               <div className="img-name">
                                 <div className="thumbanil">
-                                  <img src="assets/images/shop/cart-1.png" alt="" />
+                                  <img src="/assets/images/shop/cart-1.png" alt="" />
                                 </div>
                                 <div className="details">
                                   <Link href="/shop">
@@ -441,7 +441,7 @@ function HeaderFive() {
                             <div className="cart-item-1">
                               <div className="img-name">
                                 <div className="thumbanil">
-                                  <img src="assets/images/shop/05.png" alt="" />
+                                  <img src="/assets/images/shop/05.png" alt="" />
                                 </div>
                                 <div className="details">
                                   <Link href="/shop">
@@ -462,7 +462,7 @@ function HeaderFive() {
                             <div className="cart-item-1">
                               <div className="img-name">
                                 <div className="thumbanil">
-                                  <img src="assets/images/shop/04.png" alt="" />
+                                  <img src="/assets/images/shop/04.png" alt="" />
                                 </div>
                                 <div className="details">
                                   <Link href="/shop">

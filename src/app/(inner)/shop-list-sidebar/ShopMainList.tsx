@@ -29,7 +29,7 @@ const BlogGridMain: React.FC<BlogGridMainProps> = ({
   const handleAdd = () => {
     addToCart({
       id: Date.now(),
-      image: `/assets/images/grocery/${ProductImage}`,
+      image: `${ProductImage}`,
       title: ProductTitle ?? 'Default Product Title',
       price: parseFloat(Price ?? '0'),
       quantity: qty, // 👈 FIXED
@@ -48,7 +48,7 @@ const BlogGridMain: React.FC<BlogGridMainProps> = ({
             </span>
             <i className="fa-solid fa-bookmark" />
           </div>
-          <img src={`/assets/images/grocery/${ProductImage}`} alt="grocery" />
+          <img src={`${ProductImage}`} alt="grocery" />
         </a>
 
         <div className="body-content">

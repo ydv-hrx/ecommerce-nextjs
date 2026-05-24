@@ -108,7 +108,7 @@ function FooterTwo() {
                                             {/* single contact information */}
                                             <div className="single-contact-information-area">
                                                 <div className="icon-area">
-                                                    <img src="assets/images/icons/11.svg" alt="icons" />
+                                                    <img src="/assets/images/icons/11.svg" alt="icons" />
                                                 </div>
                                                 <div className="information-area">
                                                     <p className="disc">
@@ -121,7 +121,7 @@ function FooterTwo() {
                                             {/* single contact information */}
                                             <div className="single-contact-information-area">
                                                 <div className="icon-area">
-                                                    <img src="assets/images/icons/12.svg" alt="icons" />
+                                                    <img src="/assets/images/icons/12.svg" alt="icons" />
                                                 </div>
                                                 <div className="information-area">
                                                     <p className="disc">
@@ -134,7 +134,7 @@ function FooterTwo() {
                                             {/* single contact information */}
                                             <div className="single-contact-information-area">
                                                 <div className="icon-area">
-                                                    <img src="assets/images/icons/13.svg" alt="icons" />
+                                                    <img src="/assets/images/icons/13.svg" alt="icons" />
                                                 </div>
                                                 <div className="information-area">
                                                     <p className="disc">
@@ -163,7 +163,7 @@ function FooterTwo() {
                                     </p>
                                     <div className="payment-processw-area">
                                         <span>Payment Accepts:</span>
-                                        <img src="assets/images/payment/04.png" alt="payment" />
+                                        <img src="/assets/images/payment/04.png" alt="payment" />
                                     </div>
                                 </div>
                             </div>

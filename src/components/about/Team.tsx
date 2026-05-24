@@ -31,7 +31,7 @@ function ComponentName() {
           {/* single team area start */}
           <div className="single-team-style-one">
             <a href="#" className="thumbnail">
-              <img src="assets/images/team/01.jpg" alt="team_single" />
+              <img src="/assets/images/team/01.jpg" alt="team_single" />
             </a>
             <div className="bottom-content-area">
               <div className="top">
@@ -52,7 +52,7 @@ function ComponentName() {
           {/* single team area start */}
           <div className="single-team-style-one">
             <a href="#" className="thumbnail">
-              <img src="assets/images/team/02.jpg" alt="team_single" />
+              <img src="/assets/images/team/02.jpg" alt="team_single" />
             </a>
             <div className="bottom-content-area">
               <div className="top">
@@ -73,7 +73,7 @@ function ComponentName() {
           {/* single team area start */}
           <div className="single-team-style-one">
             <a href="#" className="thumbnail">
-              <img src="assets/images/team/03.jpg" alt="team_single" />
+              <img src="/assets/images/team/03.jpg" alt="team_single" />
             </a>
             <div className="bottom-content-area">
               <div className="top">
@@ -94,7 +94,7 @@ function ComponentName() {
           {/* single team area start */}
           <div className="single-team-style-one">
             <a href="#" className="thumbnail">
-              <img src="assets/images/team/04.jpg" alt="team_single" />
+              <img src="/assets/images/team/04.jpg" alt="team_single" />
             </a>
             <div className="bottom-content-area">
               <div className="top">

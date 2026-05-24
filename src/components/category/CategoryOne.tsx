@@ -40,7 +40,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/01.png" alt="category" />
+                                                    <img src="/assets/images/category/01.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -49,7 +49,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/02.png" alt="category" />
+                                                    <img src="/assets/images/category/02.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -58,7 +58,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/03.png" alt="category" />
+                                                    <img src="/assets/images/category/03.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -67,7 +67,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/04.png" alt="category" />
+                                                    <img src="/assets/images/category/04.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -76,7 +76,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/05.png" alt="category" />
+                                                    <img src="/assets/images/category/05.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -85,7 +85,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/06.png" alt="category" />
+                                                    <img src="/assets/images/category/06.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -94,7 +94,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/07.png" alt="category" />
+                                                    <img src="/assets/images/category/07.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -103,7 +103,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/08.png" alt="category" />
+                                                    <img src="/assets/images/category/08.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>
@@ -112,7 +112,7 @@ function CategoryOne() {
                                         <SwiperSlide>
                                             <div className="single-category-one">
                                                 <Link href="/shop">
-                                                    <img src="assets/images/category/01.png" alt="category" />
+                                                    <img src="/assets/images/category/01.png" alt="category" />
                                                     <p>Organic Vegetable</p>
                                                     <span>299 Items</span>
                                                 </Link>

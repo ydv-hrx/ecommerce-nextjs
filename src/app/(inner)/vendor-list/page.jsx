@@ -181,7 +181,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/01.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/01.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Fresh Iuice Bar <span className="closed">Closed</span>
@@ -221,7 +221,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/02.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/02.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Food Character <span className="open">Open</span>
@@ -261,7 +261,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/03.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/03.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Food Forulard <span className="open">Open</span>
@@ -301,7 +301,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/04.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/04.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Authentic Grocery <span className="closed">Closed</span>
@@ -341,7 +341,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/05.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/05.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Fresh Food<span className="open">Open</span>
@@ -381,7 +381,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/06.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/06.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Food Forulard <span className="open">Open</span>
@@ -421,7 +421,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/07.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/07.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Food Forulard <span className="open">Open</span>
@@ -461,7 +461,7 @@ export default function Home() {
                                                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/08.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/08.svg" alt="vendor" />
                                                         </div>
                                                         <h3 className="title">
                                                             Botanic Natural Product<span className="open">open</span>
@@ -507,7 +507,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/01.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/01.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -549,7 +549,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/02.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/02.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -591,7 +591,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/03.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/03.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -633,7 +633,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/04.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/04.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -675,7 +675,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/05.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/05.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -717,7 +717,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/06.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/06.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -759,7 +759,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/07.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/07.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">
@@ -801,7 +801,7 @@ export default function Home() {
                                                 <div className="col-lg-6">
                                                     <div className="single-vendor-area">
                                                         <div className="logo-vendor">
-                                                            <img src="assets/images/vendor/08.svg" alt="vendor" />
+                                                            <img src="/assets/images/vendor/08.svg" alt="vendor" />
                                                         </div>
                                                         <div className="inner">
                                                             <h3 className="title">

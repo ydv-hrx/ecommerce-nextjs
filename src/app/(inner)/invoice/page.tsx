@@ -123,7 +123,7 @@ function ComponentName() {
                                     </div>
                                 </a>
                                 <a
-                                    href="assets/images/invoice/invoice.pdf"
+                                    href="/assets/images/invoice/invoice.pdf"
                                     download=""
                                     className="rts-btn btn-primary radious-sm with-icon"
                                 >

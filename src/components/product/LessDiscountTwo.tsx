@@ -25,7 +25,7 @@ function LessDiscountTwo() {
                                             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                                 <div className="single-shopping-card-one tranding-product with-progress">
                                                     <Link href="/shop" className="thumbnail-preview">
-                                                        <img src="assets/images/grocery/27.jpg" alt="grocery" />
+                                                        <img src="/assets/images/grocery/27.jpg" alt="grocery" />
                                                     </Link>
                                                     <div className="body-content">
                                                         <div className="top">
@@ -69,7 +69,7 @@ function LessDiscountTwo() {
                                             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                                 <div className="single-shopping-card-one tranding-product with-progress">
                                                     <Link href="/shop" className="thumbnail-preview">
-                                                        <img src="assets/images/grocery/28.jpg" alt="grocery" />
+                                                        <img src="/assets/images/grocery/28.jpg" alt="grocery" />
                                                     </Link>
                                                     <div className="body-content">
                                                         <div className="top">
@@ -113,7 +113,7 @@ function LessDiscountTwo() {
                                             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                                 <div className="single-shopping-card-one tranding-product with-progress">
                                                     <Link href="/shop" className="thumbnail-preview">
-                                                        <img src="assets/images/grocery/10.jpg" alt="grocery" />
+                                                        <img src="/assets/images/grocery/10.jpg" alt="grocery" />
                                                     </Link>
                                                     <div className="body-content">
                                                         <div className="top">

@@ -108,7 +108,7 @@ function RecentlyAdded() {
               <div className="col-lg-3">
                 <div className="add-area-start-feature">
                   <div className="thumbnail">
-                    <img src="assets/images/add/01.jpg" alt="add_area" />
+                    <img src="/assets/images/add/01.jpg" alt="add_area" />
                   </div>
                   <div className="inner-add-content">
                     <div className="tag">Weekend Discount</div>

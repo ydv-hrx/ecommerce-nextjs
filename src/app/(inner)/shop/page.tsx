@@ -1,11 +1,11 @@
 "use client";
+
 import HeaderOne from "@/components/header/HeaderOne";
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from "react";
 import ShopMain from "./ShopMain";
 import ShopMainList from "./ShopMainList";
-import Product from '@/data/Product.json';
 import FooterOne from "@/components/footer/FooterOne";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 interface PostType {
@@ -20,123 +20,129 @@ interface PostType {
 
 function ShopContent() {
   const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('search')?.toLowerCase() || '';
-  
-  const [activeTab, setActiveTab] = useState<string>('tab1');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const searchQuery = searchParams.get("search")?.toLowerCase() || "";
+
+  const [products, setProducts] = useState<PostType[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [activeTab, setActiveTab] = useState<string>("tab1");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    []
+  );
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(150);
+  const [maxPrice, setMaxPrice] = useState<number>(5000);
 
-  const allCategories = ["Beverages", "Biscuits & Snacks", "Breads & Bakery"];
-  const allBrands = ["Frito Lay", "Nespresso", "Oreo", "Quaker", "Welch's"];
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/api/products");
+        const data = await res.json();
 
-  const categoryProductIndices: { [key: string]: number[] } = {
-    "Beverages": [1, 3, 4, 5, 6, 7],
-    "Biscuits & Snacks": [8, 9, 10, 12, 16],
-    "Breads & Bakery": [15, 1, 2, 3],
-  };
+        const formattedProducts = data.map((item: any) => ({
+          slug: item.id,
+          image: item.image,
+          title: item.title,
+          category: item.category,
+          price: item.price?.toString(),
+        }));
 
-  const brandProductIndices: { [key: string]: number[] } = {
-    "Frito Lay": [1, 3, 4],
-    "Nespresso": [3, 1, 4],
-    "Oreo": [8, 9, 10],
-    "Quaker": [3, 4, 10],
-    "Welch's": [8, 9, 1],
-  };
+        setProducts(formattedProducts);
+      } catch (error) {
+        console.error("Failed to fetch products", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const allCategories = Array.from(
+    new Set(products.map((p) => p.category).filter(Boolean))
+  ) as string[];
+
+  const allBrands = [
+    "Apple",
+    "Samsung",
+    "Sony",
+    "Dell",
+    "HP",
+  ];
 
   const handleCategoryChange = (category: string) => {
-    setSelectedCategories(prev =>
+    setSelectedCategories((prev) =>
       prev.includes(category)
-        ? prev.filter(cat => cat !== category)
+        ? prev.filter((cat) => cat !== category)
         : [...prev, category]
     );
   };
 
   const handleBrandChange = (brand: string) => {
-    setSelectedBrands(prev =>
+    setSelectedBrands((prev) =>
       prev.includes(brand)
-        ? prev.filter(b => b !== brand)
+        ? prev.filter((b) => b !== brand)
         : [...prev, brand]
     );
   };
 
-  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMinPriceChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const val = parseFloat(e.target.value);
     if (!isNaN(val)) setMinPrice(val);
   };
-  
-  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleMaxPriceChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const val = parseFloat(e.target.value);
     if (!isNaN(val)) setMaxPrice(val);
   };
 
-  const getFilteredByCategoryProducts = (): PostType[] => {
-    if (selectedCategories.length === 0) {
-      const allIndices = Object.values(categoryProductIndices).flat();
-      const uniqueIndices = Array.from(new Set(allIndices));
-      return uniqueIndices.map(i => Product[i]).filter(Boolean);
+  const filteredProducts = products.filter((product) => {
+    const productPrice = product.price
+      ? parseFloat(product.price)
+      : 0;
+
+    if (productPrice < minPrice || productPrice > maxPrice) {
+      return false;
     }
 
-    const selectedIndices = selectedCategories
-      .map(cat => categoryProductIndices[cat] || [])
-      .flat();
-    const uniqueSelectedIndices = Array.from(new Set(selectedIndices));
-    return uniqueSelectedIndices.map(i => Product[i]).filter(Boolean);
-  };
-
-  const getFilteredByBrandProducts = (): PostType[] => {
-    if (selectedBrands.length === 0) {
-      return Product;
+    if (
+      selectedCategories.length > 0 &&
+      !selectedCategories.includes(product.category || "")
+    ) {
+      return false;
     }
 
-    const selectedIndices = selectedBrands
-      .map(brand => brandProductIndices[brand] || [])
-      .flat();
-    const uniqueSelectedIndices = Array.from(new Set(selectedIndices));
-    return uniqueSelectedIndices.map(i => Product[i]).filter(Boolean);
-  };
+    if (!searchQuery) return true;
 
-  const productsByCategory = getFilteredByCategoryProducts();
-  const productsByBrand = getFilteredByBrandProducts();
+    const title = product.title?.toLowerCase() || "";
+    const category = product.category?.toLowerCase() || "";
 
-  const categorySlugs = new Set(productsByCategory.map(p => p.slug));
-  const brandSlugs = new Set(productsByBrand.map(p => p.slug));
+    return (
+      title.includes(searchQuery) ||
+      category.includes(searchQuery)
+    );
+  });
 
-  let combinedFilteredProducts = [];
-
-  if (selectedCategories.length > 0 && selectedBrands.length > 0) {
-    combinedFilteredProducts = productsByCategory.filter(p => brandSlugs.has(p.slug));
-  } else if (selectedCategories.length > 0) {
-    combinedFilteredProducts = productsByCategory;
-  } else if (selectedBrands.length > 0) {
-    combinedFilteredProducts = productsByBrand;
-  } else {
-    const allIndices = Object.values(categoryProductIndices).flat();
-    const uniqueIndices = Array.from(new Set(allIndices));
-    combinedFilteredProducts = uniqueIndices.map(i => Product[i]).filter(Boolean);
-  }
-
-  const filteredProducts: PostType[] = combinedFilteredProducts
-    .filter(product => {
-      const productPrice = product.price ? parseFloat(product.price) : 0;
-      if (productPrice < minPrice || productPrice > maxPrice) {
-        return false;
-      }
-
-      if (!searchQuery) return true;
-      const title = product.title?.toLowerCase() || '';
-      const category = product.category?.toLowerCase() || '';
-      return title.includes(searchQuery) || category.includes(searchQuery);
-    });
-
-  const handlePriceFilterSubmit = (e: React.FormEvent) => {
+  const handlePriceFilterSubmit = (
+    e: React.FormEvent
+  ) => {
     e.preventDefault();
   };
 
+  if (loading) {
+    return (
+      <div className="text-center py-5">
+        <h2>Loading products...</h2>
+      </div>
+    );
+  }
+
   return (
     <div className="shop-page">
-      {/* Breadcrumb */}
       <div className="rts-navigation-area-breadcrumb bg_light-1">
         <div className="container">
           <div className="row">
@@ -144,7 +150,9 @@ function ShopContent() {
               <div className="navigator-breadcrumb-wrapper">
                 <Link href="/">Home</Link>
                 <i className="fa-regular fa-chevron-right" />
-                <a className="current" href="#">Shop</a>
+                <a className="current" href="#">
+                  Shop
+                </a>
               </div>
             </div>
           </div>
@@ -165,7 +173,10 @@ function ShopContent() {
               <div className="sidebar-filter-main theiaStickySidebar">
                 {/* Price Filter */}
                 <div className="single-filter-box">
-                  <h5 className="title">Widget Price Filter</h5>
+                  <h5 className="title">
+                    Widget Price Filter
+                  </h5>
+
                   <div className="filterbox-body">
                     <form
                       action="#"
@@ -174,7 +185,10 @@ function ShopContent() {
                     >
                       <div className="half-input-wrapper">
                         <div className="single">
-                          <label htmlFor="min">Min price</label>
+                          <label htmlFor="min">
+                            Min price
+                          </label>
+
                           <input
                             id="min"
                             type="number"
@@ -183,8 +197,12 @@ function ShopContent() {
                             onChange={handleMinPriceChange}
                           />
                         </div>
+
                         <div className="single">
-                          <label htmlFor="max">Max price</label>
+                          <label htmlFor="max">
+                            Max price
+                          </label>
+
                           <input
                             id="max"
                             type="number"
@@ -194,19 +212,16 @@ function ShopContent() {
                           />
                         </div>
                       </div>
-                      <input
-                        type="range"
-                        className="range"
-                        min={0}
-                        max={150}
-                        value={maxPrice}
-                        onChange={(e) => setMaxPrice(parseInt(e.target.value, 10))}
-                      />
+
                       <div className="filter-value-min-max">
                         <span>
                           Price: ${minPrice} — ${maxPrice}
                         </span>
-                        <button type="submit" className="rts-btn btn-primary">
+
+                        <button
+                          type="submit"
+                          className="rts-btn btn-primary"
+                        >
                           Filter
                         </button>
                       </div>
@@ -216,18 +231,31 @@ function ShopContent() {
 
                 {/* Categories */}
                 <div className="single-filter-box">
-                  <h5 className="title">Product Categories</h5>
+                  <h5 className="title">
+                    Product Categories
+                  </h5>
+
                   <div className="filterbox-body">
                     <div className="category-wrapper ">
                       {allCategories.map((cat, i) => (
-                        <div className="single-category" key={i}>
+                        <div
+                          className="single-category"
+                          key={i}
+                        >
                           <input
                             id={`cat${i + 1}`}
                             type="checkbox"
-                            checked={selectedCategories.includes(cat)}
-                            onChange={() => handleCategoryChange(cat)}
+                            checked={selectedCategories.includes(
+                              cat
+                            )}
+                            onChange={() =>
+                              handleCategoryChange(cat)
+                            }
                           />
-                          <label htmlFor={`cat${i + 1}`}>{cat}</label>
+
+                          <label htmlFor={`cat${i + 1}`}>
+                            {cat}
+                          </label>
                         </div>
                       ))}
                     </div>
@@ -236,18 +264,31 @@ function ShopContent() {
 
                 {/* Brands */}
                 <div className="single-filter-box">
-                  <h5 className="title">Select Brands</h5>
+                  <h5 className="title">
+                    Select Brands
+                  </h5>
+
                   <div className="filterbox-body">
                     <div className="category-wrapper">
                       {allBrands.map((brand, i) => (
-                        <div className="single-category" key={i}>
+                        <div
+                          className="single-category"
+                          key={i}
+                        >
                           <input
                             id={`brand${i + 1}`}
                             type="checkbox"
-                            checked={selectedBrands.includes(brand)}
-                            onChange={() => handleBrandChange(brand)}
+                            checked={selectedBrands.includes(
+                              brand
+                            )}
+                            onChange={() =>
+                              handleBrandChange(brand)
+                            }
                           />
-                          <label htmlFor={`brand${i + 1}`}>{brand}</label>
+
+                          <label htmlFor={`brand${i + 1}`}>
+                            {brand}
+                          </label>
                         </div>
                       ))}
                     </div>
@@ -260,35 +301,52 @@ function ShopContent() {
             <div className="col-xl-9 col-lg-12">
               <div className="filter-select-area">
                 <div className="top-filter">
-                  <span>Showing {filteredProducts.length} results</span>
+                  <span>
+                    Showing {filteredProducts.length} results
+                  </span>
+
                   <div className="right-end">
-                    <span>Sort: Short By Latest</span>
+                    <span>Sort: Latest</span>
+
                     <div className="button-tab-area">
-                      <ul className="nav nav-tabs" id="myTab" role="tablist">
-                        <li className="nav-item" role="presentation">
+                      <ul
+                        className="nav nav-tabs"
+                        id="myTab"
+                        role="tablist"
+                      >
+                        <li
+                          className="nav-item"
+                          role="presentation"
+                        >
                           <button
-                            onClick={() => setActiveTab('tab1')}
-                            className={`nav-link single-button ${activeTab === 'tab1' ? 'active' : ''}`}
+                            onClick={() =>
+                              setActiveTab("tab1")
+                            }
+                            className={`nav-link single-button ${
+                              activeTab === "tab1"
+                                ? "active"
+                                : ""
+                            }`}
                           >
-                            <svg width={16} height={16} viewBox="0 0 16 16" fill="none">
-                              <rect x="0.5" y="0.5" width={6} height={6} rx="1.5" stroke="#2C3B28" />
-                              <rect x="0.5" y="9.5" width={6} height={6} rx="1.5" stroke="#2C3B28" />
-                              <rect x="9.5" y="0.5" width={6} height={6} rx="1.5" stroke="#2C3B28" />
-                              <rect x="9.5" y="9.5" width={6} height={6} rx="1.5" stroke="#2C3B28" />
-                            </svg>
+                            Grid
                           </button>
                         </li>
-                        <li className="nav-item" role="presentation">
+
+                        <li
+                          className="nav-item"
+                          role="presentation"
+                        >
                           <button
-                            onClick={() => setActiveTab('tab2')}
-                            className={`nav-link single-button ${activeTab === 'tab2' ? 'active' : ''}`}
+                            onClick={() =>
+                              setActiveTab("tab2")
+                            }
+                            className={`nav-link single-button ${
+                              activeTab === "tab2"
+                                ? "active"
+                                : ""
+                            }`}
                           >
-                            <svg width={16} height={16} viewBox="0 0 16 16" fill="none">
-                              <rect x="0.5" y="0.5" width={6} height={6} rx="1.5" stroke="#2C3C28" />
-                              <rect x="0.5" y="9.5" width={6} height={6} rx="1.5" stroke="#2C3C28" />
-                              <rect x={9} y={3} width={7} height={1} fill="#2C3C28" />
-                              <rect x={9} y={12} width={7} height={1} fill="#2C3C28" />
-                            </svg>
+                            List
                           </button>
                         </li>
                       </ul>
@@ -297,58 +355,63 @@ function ShopContent() {
                 </div>
               </div>
 
-              {/* Grid or List view */}
-              <div className="tab-content" id="myTabContent">
-                <div className="product-area-wrapper-shopgrid-list mt--20 tab-pane fade show active">
-                  {activeTab === 'tab1' && (
-                    <div className="row g-4">
-                      {filteredProducts.length > 0 ? (
-                        filteredProducts.map((post: PostType, index: number) => (
-                          <div key={index} className="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
-                            <div className="single-shopping-card-one">
-                              <ShopMain
-                                Slug={post.slug}
-                                ProductImage={post.image}
-                                ProductTitle={post.title}
-                                Price={post.price}
-                              />
-                            </div>
+              {/* Grid */}
+              {activeTab === "tab1" && (
+                <div className="row g-4 mt--20">
+                  {filteredProducts.length > 0 ? (
+                    filteredProducts.map(
+                      (post: PostType, index: number) => (
+                        <div
+                          key={index}
+                          className="col-lg-4 col-md-6 col-sm-6 col-12"
+                        >
+                          <div className="single-shopping-card-one">
+                            <ShopMain
+                              Slug={post.slug}
+                              ProductImage={post.image}
+                              ProductTitle={post.title}
+                              Price={post.price}
+                            />
                           </div>
-                        ))
-                      ) : (
-                        <div className="col-12 text-center py-5">
-                          <h2>No Product Found</h2>
                         </div>
-                      )}
+                      )
+                    )
+                  ) : (
+                    <div className="col-12 text-center py-5">
+                      <h2>No Product Found</h2>
                     </div>
                   )}
                 </div>
+              )}
 
-                <div className="product-area-wrapper-shopgrid-list with-list mt--20">
-                  {activeTab === 'tab2' && (
-                    <div className="row">
-                      {filteredProducts.length > 0 ? (
-                        filteredProducts.map((post: PostType, index: number) => (
-                          <div key={index} className="col-lg-6">
-                            <div className="single-shopping-card-one discount-offer">
-                              <ShopMainList
-                                Slug={post.slug}
-                                ProductImage={post.image}
-                                ProductTitle={post.title}
-                                Price={post.price}
-                              />
-                            </div>
+              {/* List */}
+              {activeTab === "tab2" && (
+                <div className="row mt--20">
+                  {filteredProducts.length > 0 ? (
+                    filteredProducts.map(
+                      (post: PostType, index: number) => (
+                        <div
+                          key={index}
+                          className="col-lg-6"
+                        >
+                          <div className="single-shopping-card-one discount-offer">
+                            <ShopMainList
+                              Slug={post.slug}
+                              ProductImage={post.image}
+                              ProductTitle={post.title}
+                              Price={post.price}
+                            />
                           </div>
-                        ))
-                      ) : (
-                        <div className="col-12 text-center py-5">
-                          <h2>No Product Found</h2>
                         </div>
-                      )}
+                      )
+                    )
+                  ) : (
+                    <div className="col-12 text-center py-5">
+                      <h2>No Product Found</h2>
                     </div>
                   )}
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -361,16 +424,28 @@ export default function Home() {
   return (
     <>
       <HeaderOne />
-      <Suspense fallback={
-        <div className="text-center py-20">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
+
+      <Suspense
+        fallback={
+          <div className="text-center py-20">
+            <div
+              className="spinner-border text-primary"
+              role="status"
+            >
+              <span className="visually-hidden">
+                Loading...
+              </span>
+            </div>
+
+            <p className="mt-3">
+              Loading products...
+            </p>
           </div>
-          <p className="mt-3">Loading products...</p>
-        </div>
-      }>
+        }
+      >
         <ShopContent />
       </Suspense>
+
       <FooterOne />
     </>
   );

@@ -125,7 +125,7 @@ export default function Home() {
                                         </div>
                                         <div className="col-lg-5 mt_md--30 mt_sm--30">
                                             <div className="thumbnail-area">
-                                                <img src="assets/images/contact/02.jpg" alt="contact_form" />
+                                                <img src="/assets/images/contact/02.jpg" alt="contact_form" />
                                             </div>
                                         </div>
                                     </div>

@@ -2,8 +2,8 @@
     {
         "id": 1,
         "slug": "profitable-business-makes-your-profit-Best-Solution",
-        "image": "05.jpg",
-        "bannerImg": "05.jpg",
+        "image": "/assets/images/grocery/05.jpg",
+        "bannerImg": "/assets/images/grocery/05.jpg",
         "category": "Business Solution",
         "title": "Profitable business makes your profit Best Solution",
         "author": "David Smith",
@@ -123,8 +123,8 @@
     {
         "id": 12,
         "slug": "Shion-Fixation-Fueling-Your-Passion-for-All-Things-Stylish",
-        "image": "01.jpg",
-        "bannerImg": "01.jpg",
+        "image": "/assets/images/grocery/01.jpg",
+        "bannerImg": "/assets/images/grocery/01.jpg",
         "category": "Business",
         "title": "Shion Fixation: Fueling Your Passion for All Things Stylish",
         "author": "David Smith",
@@ -134,8 +134,8 @@
     {
         "id": 13,
         "slug": "ashion-fixation-fueling-your-passion-for-all-things-stylish",
-        "image": "02.jpg",
-        "bannerImg": "02.jpg",
+        "image": "/assets/images/grocery/02.jpg",
+        "bannerImg": "/assets/images/grocery/02.jpg",
         "category": "Business",
         "title": "Ashion Fixation: Fueling Your Passion for All Things Stylish",
         "author": "David Smith",
@@ -156,8 +156,8 @@
     {
         "id": 15,
         "slug": "fashion-fixation-fueling-your-passion-for-all-things-stylish",
-        "image": "04.jpg",
-        "bannerImg": "04.jpg",
+        "image": "/assets/images/grocery/04.jpg",
+        "bannerImg": "/assets/images/grocery/04.jpg",
         "category": "Business",
         "title": "Fashion Fixation: Fueling Your Passion for All Things Stylish",
         "author": "David Smith",

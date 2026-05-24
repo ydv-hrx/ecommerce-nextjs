@@ -11,7 +11,7 @@ function FeatureTwo() {
               {/* single feature product area */}
               <div className="feature-product-area-single bg_image">
                 <div className="inner-image">
-                  <img src="assets/images/feature/01.png" alt="feature" />
+                  <img src="/assets/images/feature/01.png" alt="feature" />
                 </div>
                 <div className="inner-content">
                   <h2 className="title">
@@ -30,7 +30,7 @@ function FeatureTwo() {
               {/* single feature product area */}
               <div className="feature-product-area-single two bg_image">
                 <div className="inner-image">
-                  <img src="assets/images/feature/02.png" alt="feature" />
+                  <img src="/assets/images/feature/02.png" alt="feature" />
                 </div>
                 <div className="inner-content">
                   <h2 className="title">

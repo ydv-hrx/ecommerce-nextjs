@@ -1,274 +1,540 @@
-'use client';
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import DataTable, { TableColumn } from 'react-data-table-component';
+import React, {
+  useEffect,
+  useState,
+} from "react";
 
 interface Product {
-  id: number;
-  name: string;
-  productNo: string;
+  id: string;
+  title: string;
   category: string;
-  price: string;
-  date: string;
+  price: number;
   stock: number;
   image: string;
+  description?: string;
 }
 
-const LOCAL_STORAGE_KEY = 'productTableData';
-
 const ProductTable = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [editProductId, setEditProductId] = useState<number | null>(null);
-  const [editFormData, setEditFormData] = useState<Partial<Product>>({});
-  const [filterText, setFilterText] = useState('');
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [selectedRows, setSelectedRows] = useState<Product[]>([]);
-  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
-  const dropdownRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  const [products, setProducts] =
+    useState<Product[]>([]);
 
-  // Initialize products from localStorage or default data
-  useEffect(() => {
-    const savedProducts = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedProducts) {
-      setProducts(JSON.parse(savedProducts));
-    } else {
-      const defaultProducts = [
-        { id: 1, name: 'Rede Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹200', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/15.png' },
-        { id: 2, name: 'Green Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹120', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/15.png' },
-        { id: 3, name: 'Hree Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹125', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/17.png' },
-        { id: 4, name: 'Kabir Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹133', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/18.png' },
-        { id: 5, name: 'leer Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹132', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/19.png' },
-        { id: 6, name: 'Purple Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹200', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/14.png' },
-        { id: 7, name: 'Purple Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹200', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/17.png' },
-        { id: 8, name: 'Purple Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹200', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/18.png' },
-        { id: 9, name: 'Purple Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹200', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/17.png' },
-        { id: 10, name: 'Purple Blue Gradient iPhone Case', productNo: '#87845', category: 'Electronics', price: '₹200', date: '03/02/2022', stock: 250, image: '/assets/images-dashboard/grocery/19.png' },
-      ];
-      setProducts(defaultProducts);
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(defaultProducts));
-    }
-  }, []);
+  const [loading, setLoading] =
+    useState(true);
 
-  // Save to localStorage whenever products change
-  useEffect(() => {
-    if (products.length > 0) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
-    }
-  }, [products]);
+  const [filterText, setFilterText] =
+    useState("");
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const isInside = Array.from(dropdownRefs.current.values()).some(ref => ref && ref.contains(event.target as Node));
-      if (!isInside) setActiveDropdown(null);
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleEdit = (id: number) => {
-    const productToEdit = products.find(p => p.id === id);
-    if (productToEdit) {
-      setEditFormData(productToEdit);
-      setEditProductId(id);
-      setActiveDropdown(null);
-    }
-  };
-
-  const handleSave = () => {
-    if (!editProductId) return;
-    const updatedProducts = products.map(product =>
-      product.id === editProductId ? { ...product, ...editFormData } as Product : product
-    );
-    setProducts(updatedProducts);
-    setEditProductId(null);
-    setEditFormData({});
-  };
-
-  const handleCancel = () => {
-    setEditProductId(null);
-    setEditFormData({});
-  };
-
-  const handleDelete = (id: number) => {
-    const updatedProducts = products.filter(product => product.id !== id);
-    setProducts(updatedProducts);
-    setActiveDropdown(null);
-  };
-
-  const handleAddProduct = () => {
-    const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
-    const newProduct: Product = {
-      id: newId,
-      name: 'New Product',
-      productNo: `#${Math.floor(100000 + Math.random() * 900000)}`,
-      category: 'Electronics',
-      price: '₹100',
-      date: new Date().toLocaleDateString(),
-      stock: 100,
-      image: '/assets/images-dashboard/grocery/19.png'
-    };
-    const updatedProducts = [...products, newProduct];
-    setProducts(updatedProducts);
-  };
-
-  const columns: TableColumn<Product>[] = [
-    {
-      name: 'Product Name',
-      selector: row => row.name,
-      cell: row => (
-        <div className="item-image-and-name editable">
-          <a href="#" className="thumbnail">
-            <img src={row.image} alt="grocery" />
-          </a>
-          {editProductId === row.id ? (
-            <input
-              type="text"
-              value={editFormData.name || ''}
-              onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
-            />
-          ) : (
-            <p>{row.name}</p>
-          )}
-        </div>
-      ),
-    },
-    {
-      name: 'Product No',
-      selector: row => row.productNo,
-      cell: row => editProductId === row.id ? (
-        <input
-          type="text"
-          value={editFormData.productNo || ''}
-          onChange={(e) => setEditFormData({ ...editFormData, productNo: e.target.value })}
-        />
-      ) : (
-        <p>{row.productNo}</p>
-      ),
-    },
-    {
-      name: 'Category',
-      selector: row => row.category,
-      cell: row => editProductId === row.id ? (
-        <input
-          type="text"
-          value={editFormData.category || ''}
-          onChange={(e) => setEditFormData({ ...editFormData, category: e.target.value })}
-        />
-      ) : (
-        <p>{row.category}</p>
-      ),
-    },
-    {
-      name: 'Price',
-      selector: row => row.price,
-      cell: row => editProductId === row.id ? (
-        <input
-          type="text"
-          value={editFormData.price || ''}
-          onChange={(e) => setEditFormData({ ...editFormData, price: e.target.value })}
-        />
-      ) : (
-        <p>{row.price}</p>
-      ),
-    },
-    {
-      name: 'Stock',
-      selector: row => row.stock,
-      cell: row => editProductId === row.id ? (
-        <input
-          type="number"
-          value={editFormData.stock || 0}
-          onChange={(e) => setEditFormData({ ...editFormData, stock: parseInt(e.target.value) || 0 })}
-        />
-      ) : (
-        <p>{row.stock}</p>
-      ),
-    },
-    {
-      name: 'Action',
-      cell: row => (
-        <div style={{ position: 'relative' }}>
-          <img
-            src="/assets/images-dashboard/grocery/20.png"
-            alt="menu"
-            width={20}
-            height={20}
-            onClick={() => setActiveDropdown(prev => prev === row.id ? null : row.id)}
-            style={{ cursor: 'pointer' }}
-          />
-          {activeDropdown === row.id && (
-            <div
-              className="action-edit-deleate"
-              ref={(el) => {
-                if (el) dropdownRefs.current.set(row.id, el);
-                else dropdownRefs.current.delete(row.id);
-              }}
-              style={{ position: 'absolute', right: 0, background: '#fff', border: '1px solid #ddd', zIndex: 10 }}
-            >
-              {editProductId === row.id ? (
-                <>
-                  <span onClick={handleSave} style={{ display: 'block', padding: '5px 10px', cursor: 'pointer' }}>Save</span>
-                  <span onClick={handleCancel} style={{ display: 'block', padding: '5px 10px', cursor: 'pointer' }}>Cancel</span>
-                </>
-              ) : (
-                <>
-                  <span onClick={() => handleEdit(row.id)} style={{ display: 'block', padding: '5px 10px', cursor: 'pointer' }}>Edit</span>
-                  <span onClick={() => handleDelete(row.id)} style={{ display: 'block', padding: '5px 10px', cursor: 'pointer' }}>Delete</span>
-                </>
-              )}
-            </div>
-          )}
-        </div>
-      ),
-    },
-  ];
-
-  const filteredItems = products.filter(
-    item =>
-      item.name.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.productNo.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.category.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.price.toLowerCase().includes(filterText.toLowerCase())
+  const [
+    editingProduct,
+    setEditingProduct,
+  ] = useState<Product | null>(
+    null
   );
 
+  // Fetch products
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch(
+        "/api/products"
+      );
+
+      const data =
+        await response.json();
+
+      setProducts(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  // Logout
+  const handleLogout = async () => {
+    await fetch(
+      "/api/auth/logout",
+      {
+        method: "POST",
+      }
+    );
+
+    localStorage.removeItem(
+      "token"
+    );
+
+    localStorage.removeItem(
+      "user"
+    );
+
+    window.location.href =
+      "/login";
+  };
+
+  // Delete product
+  const handleDelete = async (
+    id: string
+  ) => {
+    try {
+      const response = await fetch(
+        `/api/products/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        setProducts((prev) =>
+          prev.filter(
+            (product) =>
+              product.id !== id
+          )
+        );
+
+        alert(
+          "✅ Product Deleted"
+        );
+      }
+    } catch (error) {
+      console.error(error);
+
+      alert(
+        "❌ Failed to delete product"
+      );
+    }
+  };
+
+  // Update product
+  const handleUpdate = async () => {
+    if (!editingProduct) return;
+
+    try {
+      const response = await fetch(
+        `/api/products/${editingProduct.id}`,
+        {
+          method: "PUT",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+
+          body: JSON.stringify(
+            editingProduct
+          ),
+        }
+      );
+
+      const updated =
+        await response.json();
+
+      if (response.ok) {
+        setProducts((prev) =>
+          prev.map((p) =>
+            p.id === updated.id
+              ? updated
+              : p
+          )
+        );
+
+        alert(
+          "✅ Product Updated"
+        );
+
+        setEditingProduct(null);
+      }
+    } catch (error) {
+      console.error(error);
+
+      alert(
+        "❌ Update failed"
+      );
+    }
+  };
+
+  const filteredProducts =
+    products.filter((product) =>
+      product.title
+        .toLowerCase()
+        .includes(
+          filterText.toLowerCase()
+        )
+    );
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          padding: "40px",
+        }}
+      >
+        <h2>
+          Loading Products...
+        </h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="body-root-inner">
-      <div className="transection">
-        <div className="title-right-actioin-btn-wrapper-product-list">
-          <h3 className="title">Product</h3>
-          <div className="button-wrapper">
-            <button className="rts-btn btn-primary" onClick={handleAddProduct}>+ Add Product</button>
-          </div>
-        </div>
-        <div className="product-top-filter-area-l">
-          <div className="left-area-button-fiulter">
-            <div className="signle-product-single-button"><span>All {products.length}</span></div>
-            <div className="signle-product-single-button"><span>New Item {products.filter(p => p.name.includes('New')).length}</span></div>
-          </div>
-          <div className="right-area-search">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={filterText}
-              onChange={(e) => setFilterText(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="vendor-list-main-wrapper product-wrapper">
-          <div className="table-responsive">
-            <DataTable
-              columns={columns}
-              data={filteredItems}
-              selectableRows
-              onSelectedRowsChange={({ selectedRows }) => setSelectedRows(selectedRows)}
-              pagination
-              paginationPerPage={rowsPerPage}
-              paginationRowsPerPageOptions={[5, 10, 15, 20]}
-              noDataComponent="No products found"
-            />
-          </div>
+    <div
+      style={{
+        padding: "40px",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent:
+            "space-between",
+          alignItems: "center",
+          marginBottom: "30px",
+        }}
+      >
+        <h2>Product List</h2>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Search product..."
+            value={filterText}
+            onChange={(e) =>
+              setFilterText(
+                e.target.value
+              )
+            }
+            style={{
+              padding: "10px",
+              width: "250px",
+              border:
+                "1px solid #ccc",
+              borderRadius: "5px",
+            }}
+          />
+
+          <button
+            onClick={
+              handleLogout
+            }
+            style={{
+              background:
+                "black",
+              color: "white",
+              border: "none",
+              padding:
+                "10px 20px",
+              borderRadius:
+                "5px",
+              cursor:
+                "pointer",
+            }}
+          >
+            Logout
+          </button>
         </div>
       </div>
+
+      {/* Products */}
+      <div
+        style={{
+          display: "grid",
+          gap: "20px",
+        }}
+      >
+        {filteredProducts.map(
+          (product) => (
+            <div
+              key={product.id}
+              style={{
+                border:
+                  "1px solid #ddd",
+                borderRadius:
+                  "10px",
+                padding: "20px",
+                display: "flex",
+                alignItems:
+                  "center",
+                gap: "20px",
+              }}
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                width={120}
+                height={120}
+                style={{
+                  objectFit:
+                    "cover",
+                  borderRadius:
+                    "10px",
+                }}
+              />
+
+              <div
+                style={{
+                  flex: 1,
+                }}
+              >
+                <h3>
+                  {product.title}
+                </h3>
+
+                <p>
+                  Category:{" "}
+                  {
+                    product.category
+                  }
+                </p>
+
+                <p>
+                  Price: ₹
+                  {product.price}
+                </p>
+
+                <p>
+                  Stock:{" "}
+                  {product.stock}
+                </p>
+              </div>
+
+              {/* Actions */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                }}
+              >
+                <button
+                  onClick={() =>
+                    setEditingProduct(
+                      product
+                    )
+                  }
+                  style={{
+                    background:
+                      "orange",
+                    color: "white",
+                    border: "none",
+                    padding:
+                      "10px 20px",
+                    borderRadius:
+                      "5px",
+                    cursor:
+                      "pointer",
+                  }}
+                >
+                  Edit
+                </button>
+
+                <button
+                  onClick={() =>
+                    handleDelete(
+                      product.id
+                    )
+                  }
+                  style={{
+                    background:
+                      "red",
+                    color: "white",
+                    border: "none",
+                    padding:
+                      "10px 20px",
+                    borderRadius:
+                      "5px",
+                    cursor:
+                      "pointer",
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          )
+        )}
+      </div>
+
+      {/* Edit Modal */}
+      {editingProduct && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent:
+              "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              padding: "30px",
+              borderRadius:
+                "10px",
+              width: "400px",
+            }}
+          >
+            <h2
+              style={{
+                marginBottom:
+                  "20px",
+              }}
+            >
+              Edit Product
+            </h2>
+
+            <input
+              type="text"
+              value={
+                editingProduct.title
+              }
+              onChange={(e) =>
+                setEditingProduct({
+                  ...editingProduct,
+                  title:
+                    e.target.value,
+                })
+              }
+              placeholder="Title"
+              style={{
+                width: "100%",
+                marginBottom:
+                  "10px",
+                padding: "10px",
+              }}
+            />
+
+            <input
+              type="text"
+              value={
+                editingProduct.category
+              }
+              onChange={(e) =>
+                setEditingProduct({
+                  ...editingProduct,
+                  category:
+                    e.target.value,
+                })
+              }
+              placeholder="Category"
+              style={{
+                width: "100%",
+                marginBottom:
+                  "10px",
+                padding: "10px",
+              }}
+            />
+
+            <input
+              type="number"
+              value={
+                editingProduct.price
+              }
+              onChange={(e) =>
+                setEditingProduct({
+                  ...editingProduct,
+                  price: Number(
+                    e.target.value
+                  ),
+                })
+              }
+              placeholder="Price"
+              style={{
+                width: "100%",
+                marginBottom:
+                  "10px",
+                padding: "10px",
+              }}
+            />
+
+            <input
+              type="number"
+              value={
+                editingProduct.stock
+              }
+              onChange={(e) =>
+                setEditingProduct({
+                  ...editingProduct,
+                  stock: Number(
+                    e.target.value
+                  ),
+                })
+              }
+              placeholder="Stock"
+              style={{
+                width: "100%",
+                marginBottom:
+                  "20px",
+                padding: "10px",
+              }}
+            />
+
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              <button
+                onClick={
+                  handleUpdate
+                }
+                style={{
+                  background:
+                    "green",
+                  color: "white",
+                  border: "none",
+                  padding:
+                    "10px 20px",
+                  borderRadius:
+                    "5px",
+                  cursor:
+                    "pointer",
+                }}
+              >
+                Save
+              </button>
+
+              <button
+                onClick={() =>
+                  setEditingProduct(
+                    null
+                  )
+                }
+                style={{
+                  background:
+                    "gray",
+                  color: "white",
+                  border: "none",
+                  padding:
+                    "10px 20px",
+                  borderRadius:
+                    "5px",
+                  cursor:
+                    "pointer",
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

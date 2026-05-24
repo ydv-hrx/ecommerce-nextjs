@@ -178,7 +178,7 @@ function NavItem() {
                                             className="feature-add-megamenu-area"
                                         >
                                             <img
-                                                src="assets/images/feature/05.jpg"
+                                                src="/assets/images/feature/05.jpg"
                                                 alt="feature_product"
                                             />
                                         </Link>

@@ -50,14 +50,14 @@ const CustomerFeedback = () => {
                                                     <div className="single-customers-feedback-area">
                                                         <div className="top-thumbnail-area">
                                                             <div className="left">
-                                                                <img src="assets/images/testimonial/01.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/01.png" alt="logo" />
                                                                 <div className="information">
                                                                     <h4 className="title">Andrew D. Smith</h4>
                                                                     <span>Manager</span>
                                                                 </div>
                                                             </div>
                                                             <div className="right">
-                                                                <img src="assets/images/testimonial/02.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/02.png" alt="logo" />
                                                             </div>
                                                         </div>
                                                         <div className="body-content">
@@ -73,14 +73,14 @@ const CustomerFeedback = () => {
                                                     <div className="single-customers-feedback-area">
                                                         <div className="top-thumbnail-area">
                                                             <div className="left">
-                                                                <img src="assets/images/testimonial/01.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/01.png" alt="logo" />
                                                                 <div className="information">
                                                                     <h4 className="title">Andrew D. Smith</h4>
                                                                     <span>Manager</span>
                                                                 </div>
                                                             </div>
                                                             <div className="right">
-                                                                <img src="assets/images/testimonial/02.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/02.png" alt="logo" />
                                                             </div>
                                                         </div>
                                                         <div className="body-content">
@@ -96,14 +96,14 @@ const CustomerFeedback = () => {
                                                     <div className="single-customers-feedback-area">
                                                         <div className="top-thumbnail-area">
                                                             <div className="left">
-                                                                <img src="assets/images/testimonial/01.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/01.png" alt="logo" />
                                                                 <div className="information">
                                                                     <h4 className="title">Andrew D. Smith</h4>
                                                                     <span>Manager</span>
                                                                 </div>
                                                             </div>
                                                             <div className="right">
-                                                                <img src="assets/images/testimonial/02.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/02.png" alt="logo" />
                                                             </div>
                                                         </div>
                                                         <div className="body-content">
@@ -119,14 +119,14 @@ const CustomerFeedback = () => {
                                                     <div className="single-customers-feedback-area">
                                                         <div className="top-thumbnail-area">
                                                             <div className="left">
-                                                                <img src="assets/images/testimonial/01.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/01.png" alt="logo" />
                                                                 <div className="information">
                                                                     <h4 className="title">Andrew D. Smith</h4>
                                                                     <span>Manager</span>
                                                                 </div>
                                                             </div>
                                                             <div className="right">
-                                                                <img src="assets/images/testimonial/02.png" alt="logo" />
+                                                                <img src="/assets/images/testimonial/02.png" alt="logo" />
                                                             </div>
                                                         </div>
                                                         <div className="body-content">
